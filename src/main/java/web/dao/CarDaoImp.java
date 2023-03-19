@@ -9,23 +9,17 @@ import java.util.List;
 @Component
 public class CarDaoImp implements CarDao {
 
-    static int count;
+    private static int count;
 
-    List<Car> cars = Arrays.asList(new Car(++count, "AMW", 1),
+    private List<Car> cars = Arrays.asList(new Car(++count, "AMW", 1),
             new Car(++count, "BMW", 2),
             new Car(++count, "CMW", 3),
             new Car(++count, "DMW", 4),
             new Car(++count, "EMW", 5));
 
-
     @Override
-    public List<Car> getAll() {
-        return cars;
-    }
-
-    @Override
-    public List<Car> getTo(int i) {
-        return cars.stream().limit(i).toList();
+    public List<Car> get(int i) {
+        return i < 1 ? cars : cars.stream().limit(i).toList();
     }
 
     @Override

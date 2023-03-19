@@ -9,7 +9,7 @@ import web.service.CarService;
 
 @Controller
 public class CarsController {
-    CarService carService;
+    private CarService carService;
 
     @Autowired
     public CarsController(CarService carService) {
@@ -18,8 +18,7 @@ public class CarsController {
 
     @GetMapping("/cars")
     public String viewLimitCar(@RequestParam("count") int count, ModelMap model) {
-        model.addAttribute("cars",
-                count < 1 ? carService.getAll() : carService.getTo(count));
+        model.addAttribute("cars", carService.get(count));
         return "cars";
     }
 }

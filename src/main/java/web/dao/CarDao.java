@@ -5,8 +5,7 @@ import web.model.Car;
 import java.util.List;
 
 public interface CarDao {
-    List<Car> getAll();
-    List<Car> getTo(int i);
+    List<Car> get(int i);
     Car getById(int id);
     void add(Car car);
 
